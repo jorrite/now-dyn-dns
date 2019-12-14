@@ -3,7 +3,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 . $1
 
-IP=$(curl -s ifconfig.co)
+IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
 RESULT=$(curl -s "https://api.zeit.co/v2/domains/$DOMAIN/records" \
   -H "Authorization: Bearer $TOKEN" | \
   jq -r --arg IP "$IP" \
